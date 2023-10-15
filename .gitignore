@@ -1,3 +1,8 @@
+# misc
+*gitignored*
+.php-cs-fixer.cache
+
+# default
 /.phpunit.cache
 /node_modules
 /public/build
