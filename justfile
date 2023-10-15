@@ -14,3 +14,7 @@ set dotenv-load
 # start a mailpit server (temporary docker container)
 @mailpit:
   docker run --name=mailpit --rm -p 8025:8025 -p 1025:1025 axllent/mailpit
+
+# generate IDE helper metadata with 'laravel-ide-helper'
+@gen-ide-helpers:
+  php artisan ide-helper:generate && php artisan ide-helper:models -M
