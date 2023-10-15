@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class TodoController extends Controller
@@ -23,9 +24,20 @@ class TodoController extends Controller
     }
 
     /** Store a newly created resource in storage. */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        error_log("Creating new todo...");
+
+        // validate form data
+        $validated = $request->validate([
+            'content' => 'required|string|max:255',
+        ]);
+
+        // create new object
+        $request->user()->todos()->create($validated);
+
+        // redirect to object index
+        return redirect(route('todos.index'));
     }
 
     /** Display the specified resource. */
