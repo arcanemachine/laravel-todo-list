@@ -10,10 +10,10 @@ use Illuminate\Http\Request;
 class TodoController extends Controller
 {
     /** Display a listing of the resource. */
-    public function index(): View
+    public function index(Request $request): View
     {
         return view('todos.index', [
-            'todos' => Todo::with('user')->get(),
+            'todos' => $request->user()->todos()->get(),
         ]);
     }
 
