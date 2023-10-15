@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Todo;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class TodoController extends Controller
 {
     /** Display a listing of the resource. */
-    public function index(): Response
+    public function index(): View
     {
-        return response('Hello world!');
+        return view('todos.index', [
+            'todos' => Todo::with('user')->get(),
+        ]);
     }
 
     /** Show the form for creating a new resource. */
