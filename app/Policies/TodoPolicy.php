@@ -33,6 +33,14 @@ class TodoPolicy
     }
 
     /**
+     * Determine whether the user can edit the model.
+     */
+    public function edit(User $user, Todo $todo): bool
+    {
+        return $todo->user()->is($user);
+    }
+
+    /**
      * Determine whether the user can update the model.
      */
     public function update(User $user, Todo $todo): bool

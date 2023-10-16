@@ -49,6 +49,9 @@ class TodoController extends Controller
     /** Show the form for editing the specified resource. */
     public function edit(Todo $todo)
     {
+        // ensure the user is authorized to edit the object
+        $this->authorize('edit', $todo);
+
         return view('todos.edit', ['todo' => $todo]);
     }
 
