@@ -37,6 +37,9 @@ class TodoController extends Controller
         // create new object
         $request->user()->todos()->create($validated);
 
+        // queue success message
+        session()->flash('status', 'Item created successfully');
+
         // redirect to object index
         return redirect(route('todos.index'));
     }
@@ -68,6 +71,9 @@ class TodoController extends Controller
         // update the object
         $todo->update($validated);
 
+        // queue success message
+        session()->flash('status', 'Item updated successfully');
+
         // redirect to object index
         return redirect(route('todos.index'));
     }
@@ -80,6 +86,9 @@ class TodoController extends Controller
 
         // delete the object
         $todo->delete();
+
+        // queue success message
+        session()->flash('status', 'Item deleted successfully');
 
         // redirect to object index
         return redirect(route('todos.index'));
