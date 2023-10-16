@@ -6,6 +6,7 @@ use App\Models\Todo;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class TodoController extends Controller
 {
@@ -41,9 +42,9 @@ class TodoController extends Controller
     }
 
     /** Display the specified resource. */
-    public function show(Todo $todo)
+    public function show(): View
     {
-        //
+        abort(403);
     }
 
     /** Show the form for editing the specified resource. */

@@ -33,4 +33,6 @@ Route::resource('todos', TodoController::class)
     ->only(['index', 'store', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 
+Route::resource('todos', TodoController::class)->only(['show']);
+
 require __DIR__ . '/auth.php';
