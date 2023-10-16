@@ -19,5 +19,13 @@
                 <x-primary-button class="h-10 w-28 justify-center">Confirm</x-primary-button>
             </div>
         </form>
+
+        <form method="POST" action="{{ route('todos.destroy', $todo) }}" class="mt-12">
+            @csrf
+            @method('delete')
+            <x-danger-button class="w-52 h-12 justify-center"
+                onclick="event.preventDefault(); if (confirm('Are you sure you want to delete this item?')) { this.closest('form').submit(); }">Delete
+                this item</x-danger-button>
+        </form>
     </div>
 </x-app-layout>
