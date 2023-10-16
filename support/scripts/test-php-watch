@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+  echo "Run PHP tests in watch mode."
+  exit
+fi
+
+until ag -g "\.(php)$" | entr -d php artisan test "$@"; do sleep 1; done
