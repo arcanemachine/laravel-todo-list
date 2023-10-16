@@ -49,13 +49,23 @@ class TodoController extends Controller
     /** Show the form for editing the specified resource. */
     public function edit(Todo $todo)
     {
-        //
+        return view('todos.edit', ['todo' => $todo]);
     }
 
     /** Update the specified resource in storage. */
     public function update(Request $request, Todo $todo)
     {
-        //
+        // ensure the user is authorized to update the object
+        $this->authorize('update', $todo);
+
+        // validate form data
+        $validated = $request->validate(['content' => 'required|string|max:255']);
+
+        // update the object
+        $todo->update($validated);
+
+        // redirect to object index
+        return redirect(route('todos.index'));
     }
 
     /** Remove the specified resource from storage. */
