@@ -7,7 +7,7 @@
         <form method="POST" action="{{ route('todos.store') }}"
             class="flex flex-col sm:flex-row justify-center items-center w-full mt-12 space-x-2 space-y-2">
             @csrf
-            <input name="content" placeholder="I need to..."
+            <input name="content" placeholder="I need to..." autocomplete="off"
                 class="block w-60 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm text-center"
                 value="{{ old('content') }}" />
             <x-primary-button class="block h-10">Create</x-primary-button>

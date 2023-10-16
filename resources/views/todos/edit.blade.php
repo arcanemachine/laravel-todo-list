@@ -8,7 +8,7 @@
             @csrf
             @method('patch')
 
-            <input name="content" placeholder="I need to..."
+            <input name="content" placeholder="I need to..." autocomplete="off"
                 class="block w-72 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                 value="{{ old('content', $todo->content) }}" />
 
